@@ -139,9 +139,8 @@ exports.delete_one_customer_info = (req,res,next) => {
                 console.log(stringifiedJson[i].name);
                 if(stringifiedJson[i].name === req.params.name)
                 {
-                    stringifiedJson.pop(i);
-                    console.log("match found breadking out: " +stringifiedJson[i].name)
-                    console.log(stringifiedJson);
+                    const index = stringifiedJson.indexOf(stringifiedJson[i].name);
+                    stringifiedJson.splice(index,1);
                     fs.writeFile("./customer.json", JSON.stringify(stringifiedJson), err => {
                         if (err) {
                             return res.status(400).send({message : "Error deleting"});  
