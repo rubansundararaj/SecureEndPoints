@@ -42,3 +42,13 @@ app.listen(port, () =>
 {
     console.log('Running on port ' + port);
 });
+
+
+
+//PUT http://localhost:4000/usermanagement/add_new_customer/:token
+// GET http://localhost:4000/usermanagement/get_one_customer/Floyd/:token
+// GET http://localhost:4000/usermanagement/get_all_customers/: token
+// Post http://localhost:4000/usermanagement/login
+// patch http://localhost:4000/usermanagement/update_one_customer_info/:token
+// del http://localhost:4000/usermanagement/delete_one_customer_info/Johncena/:token
+
