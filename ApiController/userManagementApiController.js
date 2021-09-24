@@ -136,11 +136,14 @@ exports.delete_one_customer_info = (req,res,next) => {
             var stringifiedJson = JSON.parse(jsonString);
             for(var i = 0; i < stringifiedJson.length; i++)
             {
-                console.log(stringifiedJson[i].name);
+                
                 if(stringifiedJson[i].name === req.params.name)
                 {
-                    const index = stringifiedJson.indexOf(stringifiedJson[i].name);
+                    console.log(stringifiedJson[i].name);
+                    const index = stringifiedJson.indexOf(stringifiedJson[i]);
+                    console.log(index);
                     stringifiedJson.splice(index,1);
+                    console.log(stringifiedJson);
                     fs.writeFile("./customer.json", JSON.stringify(stringifiedJson), err => {
                         if (err) {
                             return res.status(400).send({message : "Error deleting"});  
@@ -148,8 +151,6 @@ exports.delete_one_customer_info = (req,res,next) => {
                       });
                     break;
                 }
-
-                console.log(i);
             }
           });
 
