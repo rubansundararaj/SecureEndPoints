@@ -30,12 +30,6 @@ var userAPis = require('./router/userManagementApis');
 
 app.use('/usermanagement',userAPis);
 
-app.get ('/', function (req, res, next) {
-  console.log("Origin");
-  return res.json ({msg: 'This is CORS-enabled for a Single Route'});
-});
-
-
 const port = 4000;
 
 app.listen(port, () => 
