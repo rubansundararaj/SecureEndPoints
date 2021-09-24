@@ -42,25 +42,25 @@ exports.get_all_customers = (req,res,next) => {
 }
 
 
-exports.get_one_customer = (req,res,next) => {    
-    try{
-        fs.readFile("./customer.json", "utf8", (err, jsonString) => {
-            var stringifiedJson = JSON.parse(jsonString);
-            (stringifiedJson).forEach(element => {
-                if(element.name === req.params.name){
-                    return res.status(200).send(element); 
-                }
-                console.log(element);
-            });
-            
-          });
-    }
-    catch(e)
-    {
-        console.log(e);
-        return res.status(400).send({message : "Error getting data"});  
-    }
-}
+// exports.get_one_customer = (req,res,next) => {    
+//     try{
+//         fs.readFile("./customer.json", "utf8", (err, jsonString) => {
+//             var stringifiedJson = JSON.parse(jsonString);
+//             (stringifiedJson).forEach(element => {
+//                 if(element.name === req.params.name){
+//                     return res.status(200).send(element); 
+//                 }
+              
+//             });
+//             return res.status(400).send({message : "user not found"});  
+//           });
+//     }
+//     catch(e)
+//     {
+//         console.log(e);
+//         return res.status(400).send({message : "Error getting data"});  
+//     }
+// }
 
 exports.add_new_customer = (req,res,next) => { 
     try{
@@ -100,7 +100,9 @@ exports.update_one_customer_info = (req,res,next) => {
             {
                 console.log(stringifiedJson[i].name +"   "+ req.body.name)
                 if(stringifiedJson[i].name === req.body.name){
-                    stringifiedJson.pop(i);
+                    const index = stringifiedJson.indexOf(stringifiedJson[i]);
+                    console.log(index);
+                    stringifiedJson.splice(index,1);
                     var newUser =   {"name": req.body.name, "profession" : req.body.profession}
                     stringifiedJson.push(newUser);
                     console.log("match found breadking out: " +i)

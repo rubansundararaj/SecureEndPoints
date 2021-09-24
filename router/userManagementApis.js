@@ -6,7 +6,7 @@ var userManagementApiController = require('../ApiController/userManagementApiCon
 apirouter.post('/login',userManagementApiController.login);
 
 apirouter.get('/get_all_customers/:jwtToken',decodeAndAuthTokenJwtToken,userManagementApiController.get_all_customers);
-apirouter.get('/get_one_customer/:name/:jwtToken',decodeAndAuthTokenJwtToken,userManagementApiController.get_one_customer);
+//apirouter.get('/get_one_customer/:name/:jwtToken',decodeAndAuthTokenJwtToken,userManagementApiController.get_one_customer);
 
 apirouter.put('/add_new_customer/:jwtToken',decodeAndAuthTokenJwtToken, userManagementApiController.add_new_customer);
 
